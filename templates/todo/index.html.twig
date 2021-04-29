@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css" class="">
+</head>
+<body>
+<div class="container">
+
+    {% for value in  app.session.flashBag.get('messageVisit1') %}
+        <div class="alert alert-info">
+            {{ value }}
+        </div>
+    {% endfor %}
+    {% for value in  app.session.flashBag.get('messageerror') %}
+        <div class="alert alert-danger">
+            {{ value }}
+        </div>
+    {% endfor %}
+    {% for value in  app.session.flashBag.get('messagesucces') %}
+        <div class="alert alert-success">
+            {{ value }}
+        </div>
+    {% endfor %}
+
+
+
+<h1> LISTE DES TODOS</h1>
+<ol class="list-group">
+    {% for cle ,value in app.session.get('todo') %}
+
+    <li class="list-group-item">
+        {{ cle }} : {{ value }}
+    </li>
+    {% endfor %}
+
+</ol>
+</div>
+
+</body>
+</html>
